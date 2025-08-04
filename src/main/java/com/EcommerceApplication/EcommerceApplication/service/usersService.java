@@ -12,4 +12,8 @@ public interface usersService {
     List<usersModel> getAllUsers();
     usersModel getUserById(Long id);
     Optional<usersModel> getUserByEmail(String email);
+    Optional<usersModel>  getUserByUsername(String username);
+    usersModel createUser(usersModel user);
+    usersModel updateUser(Long id, usersModel user);
+    void deleteUser(Long id);
 }
