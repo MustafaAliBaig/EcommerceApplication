@@ -10,7 +10,7 @@ import java.time.OffsetDateTime;
 import java.util.Date;
 
 @Data
-@Table(name = DatabaseConstants.TABLE_USERS)
+@Table(name = DatabaseConstants.TABLE_USERS) // Table name
 @Entity
 public class usersModel {
 
@@ -30,6 +30,4 @@ public class usersModel {
 //    private Date created_at;
     @Column(name = "created_at", updatable = false, insertable = false)
     private LocalDateTime created_at;
-
-
 }

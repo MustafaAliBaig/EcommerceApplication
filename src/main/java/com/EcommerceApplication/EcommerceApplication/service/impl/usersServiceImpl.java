@@ -16,7 +16,7 @@ public class usersServiceImpl implements usersService {
     private usersRepository usersRepository;
 
     @Override
-    public List<usersModel> getAllUsers(){
+    public List<usersModel> getAllUsers() {
         //access specifier, return type and method name
 
         return usersRepository.findAll();
@@ -25,7 +25,7 @@ public class usersServiceImpl implements usersService {
     @Override
     public usersModel getUserById(Long id) {
         // This method is not implemented in the original code, but you can implement it as needed.
-        return usersRepository.findById(id) .orElseThrow(() -> new RuntimeException("User not found with ID: " + id));
+        return usersRepository.findById(id).orElseThrow(() -> new RuntimeException("User not found with ID: " + id));
         // Placeholder return statement
     }
 
@@ -34,6 +34,34 @@ public class usersServiceImpl implements usersService {
         return usersRepository.findByEmailIgnoreCase(email);
     }
 
+    @Override
+    public Optional<usersModel> getUserByUsername(String username) {
+        return usersRepository.findByUsernameIgnoreCase(username);
+    }
 
+    @Override
+    public usersModel createUser(usersModel user) {
+        // This method is not implemented in the original code, but you can implement it as needed
+        return usersRepository.save(user);
+    }
 
+    @Override
+    public usersModel updateUser(Long id, usersModel user) {
+        // This method is not implemented in the original code, but you can implement it as needed
+        usersModel existingUser = usersRepository.findById(id)
+                .orElseThrow(() -> new RuntimeException("User not found with ID: " + id));
+        existingUser.setUsername(user.getUsername());
+        existingUser.setEmail(user.getEmail());
+        existingUser.setPassword(user.getPassword());
+        existingUser.setPhone(user.getPhone());
+        return usersRepository.save(existingUser);
+    }
+
+    @Override
+    public void deleteUser(Long id) {
+        // This method is not implemented in the original code, but you can implement it as needed
+        usersRepository.findById(id)
+                .orElseThrow(() -> new RuntimeException("User not found with ID: " + id));
+        usersRepository.deleteById(id);
+    }
 }
