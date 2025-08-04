@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class usersServiceImpl implements usersService {
@@ -27,6 +28,12 @@ public class usersServiceImpl implements usersService {
         return usersRepository.findById(id) .orElseThrow(() -> new RuntimeException("User not found with ID: " + id));
         // Placeholder return statement
     }
+
+    @Override
+    public Optional<usersModel> getUserByEmail(String email) {
+        return usersRepository.findByEmailIgnoreCase(email);
+    }
+
 
 
 }
