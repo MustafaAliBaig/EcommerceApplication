@@ -6,3 +6,9 @@
         username: root
         password: root
         driver-class-name: com.mysql.cj.jdbc.Driver
+
+        management:
+          endpoints:
+            web:
+              exposure:
+                include: health,info,metrics,beans
