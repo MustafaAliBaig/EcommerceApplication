@@ -1,28 +1,22 @@
 package com.EcommerceApplication.EcommerceApplication.model;
+
 import com.EcommerceApplication.EcommerceApplication.constants.DatabaseConstants;
 import jakarta.persistence.*;
 import lombok.Data;
 
-import java.math.BigDecimal;
 import java.time.LocalDateTime;
 
 @Data
-@Table(name = DatabaseConstants.TABLE_PRODUCTS)
+@Table(name= DatabaseConstants.TABLE_CART)
 @Entity
-public class productModel {
+public class cartModel {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name="product_id")
-    private long product_id;
-    @Column(name="name")
-    private String name;
-    @Column(name="description")
-    private String description;
-    @Column(name="price")
-    private BigDecimal price;
-    @Column(name="quantity")
-    private int quantity;
+    @Column(name="cart_id")
+    private int cart_id;
+    @Column(name="user_id")
+    private int user_id;
     @Column(name = "created_at", updatable = false, insertable = false)
     private LocalDateTime created_at;
 }
